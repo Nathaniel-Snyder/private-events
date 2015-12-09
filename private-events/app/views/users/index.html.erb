@@ -1,0 +1,25 @@
+<% if is_logged_in? %>
+	<h3><%= current_user.name %> is signed in</h3>
+<% end %>
+
+<%= link_to "All Events", events_path %>
+
+<ul>
+	<% @users.each do |user| %>
+		<li><%= link_to user.name, user_path(user.id) %></li>
+	<% end %>
+</ul>
+
+<% if is_logged_in? %>
+	<%= link_to "Profile Page",	current_user %></br></br>
+<% else %>
+	<%= link_to "Signup", signup_path %></br></br>
+	<%= link_to "Sign In", login_path %>
+<% end %>
+
+
+<%= @users.each do |user| %>
+	<ul>
+		<li><%= user.attended_events %></li>
+	</ul>
+<% end %>
